@@ -15,6 +15,12 @@
   <%= @user.fav_animal %>
 </p>
 
+<% @user.images.each do |img| %>
+  <p>
+  <%= image_tag img.photo.url(:thumbnail) %>
+  </p>
+<% end %>
+
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

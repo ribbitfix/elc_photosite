@@ -73,10 +73,12 @@ class ImagesController < ApplicationController
   # DELETE /images/1.json
   def destroy
     @image = Image.find(params[:id])
+    user = @image.user
+    
     @image.destroy
 
     respond_to do |format|
-      format.html { redirect_to images_url }
+      format.html { redirect_to edit_user_path(user) }
       format.json { head :no_content }
     end
   end

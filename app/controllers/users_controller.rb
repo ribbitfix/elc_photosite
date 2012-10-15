@@ -59,7 +59,16 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     respond_to do |format|
-      if @user.update_attributes(params[:user])
+     # if @user.update_attributes(params[:user])
+      if @user.update_attributes( :first_name => params[:user][:first_name]) 
+        
+        img = @user.images.new()
+
+        img.photo = params[:user][:photo]
+        img.caption = "auto-made caption is fun."
+        
+        img.save
+
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { head :no_content }
       else

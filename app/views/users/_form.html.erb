@@ -1,4 +1,4 @@
-<%= form_for(@user) do |f| %>
+<%= form_for(@user, :html => {:multipart => true}) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -23,6 +23,21 @@
     <%= f.label :fav_animal %><br />
     <%= f.text_field :fav_animal %>
   </div>
+
+  <% @user.images.each do |img| %>
+    <p>
+    <%= image_tag img.photo.url(:thumbnail) %>
+  
+    <%= link_to 'Destroy', img, method: :delete, data: { confirm: 'Are you sure?' } %>
+  
+    </p>
+  <% end %>
+
+
+  <p> Add a new photo: </p>
+  <%= f.file_field :photo %><br />
+  
+
   <div class="actions">
     <%= f.submit %>
   </div>
