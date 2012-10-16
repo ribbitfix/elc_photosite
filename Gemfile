@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.8'
 gem 'haml'
 gem 'paperclip'
-gem 'delayed_job'
+gem 'delayed_job_active_record'
 gem 'rails_admin'
 
 # Bundle edge Rails instead:
